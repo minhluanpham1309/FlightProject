@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    
     <head th:replace="admin/layout:: head"></head>
     <body>
         <div class="d-flex" id="wrapper">
@@ -13,22 +14,24 @@
                         <table class="table table-bordered table-responsive-md table-striped text-center">
                             <thead>
                                 <tr>
-                                    <th class="text-center">Id</th>
-                                    <th class="text-center">Title</th>
-                                    <th class="text-center">Detail</th>
-                                    <th class="text-center">Remove</th>
+                                    <th class="text-center">Flight Number</th>
+                                    <th class="text-center">Departure Airport</th>
+                                    <th class="text-center">Arrive Airport</th>
+                                    <th class="text-center">Departure Date</th>
+                                    <th class="text-center">Arrive Date</th>
+                                    <th class="text-center">Price</th>
                                 </tr>
                             </thead>
                             <tbody >
-                                <tr>
-                                    <td class="pt-3-half" contenteditable="true">Aurelia Vega</td>
-                                    <td  class="pt-3-half" contenteditable="true"> aaa</td>
-                                    <td  class="pt-3-half" contenteditable="true">bbbb</td>
+                                <tr th:each="flight: ${flights}">
+                                    <td th:text="${flight.flightNumber}" class="pt-3-half" contenteditable="true">Aurelia Vega</td>
+                                    <td th:text="${flight.fromAirport.airportName}" class="pt-3-half" contenteditable="true">Aurelia Vega</td>
+                                    <td th:text="${flight.toAirport.airportName}" class="pt-3-half" contenteditable="true">Aurelia Vega</td>
+                                    <td th:text="${flight.departDate}" class="pt-3-half" contenteditable="true">Aurelia Vega</td>
+                                    <td th:text="${flight.arrivDate}" class="pt-3-half" contenteditable="true">Aurelia Vega</td>
+                                    <td th:text="${flight.price}" class="pt-3-half" contenteditable="true">Aurelia Vega</td>
                                     <td>
                                         <ul class="list-inline m-0">
-                                            <li class="list-inline-item">
-                                                <button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i></button>
-                                            </li>
                                             <li class="list-inline-item">
                                                 <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
                                             </li>
@@ -38,7 +41,6 @@
                                         </ul>
                                     </td>
                                 </tr>
-
                             </tbody>
                         </table>
                     </div>
